@@ -1,0 +1,60 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				/* "navigationBarTitleText": "首页" */
+			}
+		}, {
+			"path": "pages/news/news",
+			"style": {
+				"enablePullDownRefresh": false
+				/* "navigationBarTitleText": "资讯" */
+			}
+
+		}, {
+			"path": "pages/cart/cart",
+			"style": {
+				"enablePullDownRefresh": false
+				/* "navigationBarTitleText": "购物车" */
+			}
+
+		}, {
+			"path": "pages/member/member",
+			"style": {
+				"enablePullDownRefresh": false
+				/* "navigationBarTitleText": "会员" */
+			}
+
+		}
+	],
+	"globalStyle": {   //全局设置
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "黑马商城",
+		"navigationBarBackgroundColor": "#b00000",
+		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"color":"#C0C0C0",
+		"selectedColor":"#b00000",
+		"borderStyle":"white",
+		"list": [{
+				"pagePath": "pages/index/index",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/news/news",
+				"text": "资讯"
+			}, {
+				"pagePath": "pages/cart/cart",
+				"iconPath":"static/logo.png",
+				"selectedIconPath":"static/icon/cart.png",
+				"text": "购物车"
+			},
+			{
+				"pagePath": "pages/member/member",
+				"text": "会员"
+			}
+		]
+	}
+}
