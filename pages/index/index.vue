@@ -1,17 +1,8 @@
 <template>
 	<view class="home">
-		<swiper autoplay circular indicator-dots interval="2000">
-			<swiper-item>
-				<image src="../../static/pic/11.jpg"></image>
-			</swiper-item>
-			<swiper-item>
-				<image src="../../static/pic/22.jpg"></image>
-			</swiper-item>
-			<swiper-item>
-				<image src="../../static/pic/33.jpg"></image>
-			</swiper-item>
-			<swiper-item>
-				<image src="../../static/pic/44.jpg"></image>
+		<swiper autoplay circular indicator-dots interval="2000" >
+			<swiper-item v-for="item in swiper" :id="item.id" >
+				<image :src="item.img"></image>
 			</swiper-item>
 		</swiper>
 	</view>
@@ -21,13 +12,23 @@
 	export default {
 		data() {
 			return {
-				title: 'Hello'
+				swiper: []
 			}
 		},
 		onLoad() {
-
+		this.getSwiper()
 		},
 		methods: {
+			getSwiper() {
+				console.log("我被触发了")
+				uni.request({
+					url: 'http://localhost:8082/api/getlunbo',
+					success:res=> {
+						console.log(res)
+						this.swiper = res.data.message
+					}
+				})
+			}
 
 		}
 	}
