@@ -5,6 +5,9 @@
 				<image :src="item.img"></image>
 			</swiper-item>
 		</swiper>
+		<view class="nav">
+			
+		</view>
 	</view>
 </template>
 
@@ -19,15 +22,13 @@
 		this.getSwiper()
 		},
 		methods: {
-			getSwiper() {
+			async getSwiper() {
 				console.log("我被触发了")
-				uni.request({
-					url: 'http://localhost:8082/api/getlunbo',
-					success:res=> {
-						console.log(res)
-						this.swiper = res.data.message
-					}
+				const res = await this.$myRuquest({
+					url: '/api/getlunbo'
 				})
+				//获取轮播图
+				this.swiper = res.data.message
 			}
 
 		}
