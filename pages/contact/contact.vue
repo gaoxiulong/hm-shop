@@ -28,7 +28,7 @@
 		methods: {
 			phone(){
 				uni.makePhoneCall({
-					phoneNumber: '400-618-9090'
+					phoneNumber: '400-618-9090' 
 				})
 			}
 			

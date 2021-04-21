@@ -40,7 +40,7 @@
             "path" : "pages/contact/contact",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "关于我们",
                 "enablePullDownRefresh": false
             }
             
@@ -49,7 +49,7 @@
             "path" : "pages/pics/pics",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "社区图片",
                 "enablePullDownRefresh": false
             }
             

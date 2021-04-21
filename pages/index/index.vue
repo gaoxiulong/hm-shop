@@ -51,7 +51,7 @@
 				]
 			}
 		},
-		onLoad() {
+		onLoad() {//加载轮播图和商品列表数据
 			this.getSwiper()
 			this.getHotGoods()
 		},
