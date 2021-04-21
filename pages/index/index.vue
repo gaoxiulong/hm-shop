@@ -2,7 +2,7 @@
 	<view class="home">
 		<!-- 轮播图 -->
 		<swiper autoplay circular indicator-dots interval="2000">
-			<swiper-item v-for="item in swiper" :id="item.id">
+			<swiper-item v-for="item in swiper" :key="item.id">
 				<image :src="item.img"></image>
 			</swiper-item>
 		</swiper>
@@ -29,29 +29,13 @@
 		<view class="hot_goods">
 			<view class="tit">推荐商品</view>
 			<view class="goods_list">
-				<view class="goods_item">
-					<image src="../../static/pic/33.jpg"></image>
+				<view class="goods_item" v-for="item in goods" :id="item.id">
+					<image src="../../static/pic/66.jpg"></image>
 					<view class="price">
-						<text>¥2199</text>
-						<text>¥2499</text>
+						<text>¥{{item.sell_price}}</text>
+						<text>¥{{item.market_price}}</text>
 					</view>
-					<view class="name">主题说明主题说明主题说明主题说明主题说明主题说明主题说明</view>
-				</view>
-				<view class="goods_item">
-					<image src="../../static/pic/33.jpg"></image>
-					<view class="price">
-						<text>¥2199</text>
-						<text>¥2499</text>
-					</view>
-					<view class="name">主题说明</view>
-				</view>
-				<view class="goods_item">
-					<image src="../../static/pic/33.jpg"></image>
-					<view class="price">
-						<text>¥2199</text>
-						<text>¥2499</text>
-					</view>
-					<view class="name">主题说明</view>
+					<view class="name">{{item.title}}</view>
 				</view>
 			</view>
 		</view>
@@ -172,12 +156,13 @@
 						display: block;
 						/* 让图片居中生效*/
 						margin: 0 auto;
+						
 					}
 
 					.price {
 						color: $shop-color;
 						font-size: 36rpx;
-
+						margin: 10rpx 0;
 						text:nth-child(2) {
 							color: #C0C0C0;
 							font-size: 28rpx;
