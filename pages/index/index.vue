@@ -8,21 +8,9 @@
 		</swiper>
 		<!-- 导航 -->
 		<view class="nav">
-			<view class="nav_item">
-				<view class="iconfont icon-ziyuan"></view>
-				<text>黑马资源</text>
-			</view>
-			<view class="nav_item">
-				<view class="iconfont icon-guanyuwomen"></view>
-				<text>关于我们</text>
-			</view>
-			<view class="nav_item">
-				<view class="iconfont icon-tupian"></view>
-				<text>社区图片</text>
-			</view>
-			<view class="nav_item">
-				<view class="iconfont icon-shipin"></view>
-				<text>视频学习</text>
+			<view class="nav_item" v-for="(item,index) in navs" :key="index" @click="navItemClick(item.path)">
+				<view :class="item.icon"></view>
+				<text>{{item.title}}</text>
 			</view>
 		</view>
 		<!-- 推荐商品 -->
@@ -47,7 +35,28 @@
 		data() {
 			return {
 				swiper: [],
-				goods: []
+				goods: [],
+				navs: [{
+					icon: 'iconfont icon-ziyuan',
+					title: '黑马超市',
+					path: '/pages/goods/goods'
+				},
+				{
+					icon: 'iconfont icon-guanyuwomen',
+					title: '关于我们',
+					path: '/pages/contact/contact'
+				},
+				{
+					icon: 'iconfont icon-tupian',
+					title: '社区图片',
+					path: '/pages/pics/pics'
+				},
+				{
+					icon: 'iconfont icon-shipin',
+					title: '视频学习',
+					path: '/pages/videos/videos'
+				}
+				]
 			}
 		},
 		onLoad() {
@@ -55,21 +64,29 @@
 			this.getHotGoods()
 		},
 		methods: {
+			//获取轮播图
 			async getSwiper() {
 				const res = await this.$myRuquest({
 					url: '/api/getlunbo'
 				})
-				//获取轮播图
+
 				this.swiper = res.data.message
 			},
+			//获取商品数据
 			async getHotGoods() {
 				const res = await this.$myRuquest({
 					url: '/api/getgoods?pageindex=1'
 				})
-				//获取商品数据
 				console.log("我被触发了", res)
 				this.goods = res.data.message;
 			},
+			//导航跳转
+			navItemClick(url) {
+				console.log("跳转",url)
+				uni.navigateTo({
+					url
+				})
+			}
 
 		}
 	}
