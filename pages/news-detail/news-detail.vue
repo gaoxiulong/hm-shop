@@ -32,7 +32,8 @@
 			
 		},
 		onLoad(options) {
-			//console.log(options) //获取id数据
+			//console.log(options) 
+			//获取资讯列表页传递的id数据
 			this.id = options.id
 			this.getNewsDetail()
 		}

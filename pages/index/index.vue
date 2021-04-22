@@ -16,7 +16,7 @@
 		<!-- 推荐商品 -->
 		<view class="hot_goods">
 			<view class="tit">推荐商品</view>
-			<goods-list :goods= 'goods'></goods-list>
+			<goods-list :goods= 'goods' @goodItemClick="goGoodDetail"></goods-list>
 		</view>
 	</view>
 </template>
@@ -78,8 +78,13 @@
 				uni.navigateTo({
 					url
 				})
+			},
+			//获取商品详情
+			goGoodDetail(id){
+				uni.navigateTo({
+					url: '/pages/goods-detail/goods-detail?id='+id
+				})
 			}
-
 		},
 		components:{
 			"goods-list": goodsList

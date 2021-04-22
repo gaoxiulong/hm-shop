@@ -1,6 +1,6 @@
 <template>
 	<view class="goods_list">
-		<view class="goods_item" v-for="item in goods" :id="item.id">
+		<view class="goods_item" v-for="item in goods" :id="item.id" @click="goodItemClick(item.id)">
 			<image src="../../static/pic/66.jpg"></image>
 			<view class="price">
 				<text>¥{{item.sell_price}}</text>
@@ -13,7 +13,12 @@
 
 <script>
 	export default {
-		props: ['goods']
+		props: ['goods'],
+		methods:{
+			goodItemClick(id){
+				this.$emit('goodItemClick',id)
+			}
+		}
 	} 
 </script>
 

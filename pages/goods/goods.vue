@@ -1,6 +1,6 @@
 <template>
 	<view class="goods_list">
-		<goods-list :goods='goods'></goods-list>
+		<goods-list :goods='goods' @goodItemClick="goGoodDetail"></goods-list>
 		<view class="isOver" v-if="flag">---------END---------</view>
 	</view>
 </template>
@@ -24,6 +24,12 @@
 				//console.log("我被触发了", res)
 				this.goods = [...this.goods, ...res.data.message];
 				callback && callback()  //下拉刷新回调
+			},
+			//获取商品详情
+			goGoodDetail(id){
+				uni.navigateTo({
+					url: '/pages/goods-detail/goods-detail?id='+id
+				})
 			}
 
 		},

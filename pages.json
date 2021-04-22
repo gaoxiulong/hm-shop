@@ -67,7 +67,16 @@
             "path" : "pages/news-detail/news-detail",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "详情页",
+                "navigationBarTitleText": "资讯详情",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/goods-detail/goods-detail",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "商品详情",
                 "enablePullDownRefresh": false
             }
             

@@ -46,6 +46,9 @@
 	.icon-ziyuan:before {
 	  content: "\e60d";
 	}
-	
-
+	/* 商品详情内容中的图片需要设置到全局 */
+	.gomeImgLoad{
+		width: 750rpx !important;
+		height: auto;
+	}
 </style>
