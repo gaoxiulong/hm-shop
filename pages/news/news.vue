@@ -1,22 +1,43 @@
 <template>
-	<view>
-		新闻
+	<view class="news">
+	<news-item :newsList='newsList' @itemClick="goDetail"></news-item>
 	</view>
 </template>
 
 <script>
+	import newsItem from "../../components/news-item/news-item.vue"
 	export default {
 		data() {
 			return {
-				
+				newsList: []
 			}
 		},
 		methods: {
-			
+			async getNews() {
+				const res = await this.$myRuquest({
+					url: '/api/getnewslist'
+				})
+				console.log("新闻资讯", res)
+				this.newsList = res.data.message
+			},
+			goDetail(id){
+				//console.log(id)
+				uni.navigateTo({
+					url: '/pages/news-detail/news-detail?id='+id
+				})
+			}
+		},
+		components:{
+			"news-item": newsItem
+		},
+		onLoad() {
+			this.getNews()
 		}
 	}
 </script>
 
-<style>
-
+<style lang="scss">
+	.news {
+		
+	}
 </style>

@@ -63,6 +63,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/news-detail/news-detail",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "详情页",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {   //全局设置
 		"navigationBarTextStyle": "white",
