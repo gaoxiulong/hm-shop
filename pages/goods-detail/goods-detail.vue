@@ -31,17 +31,49 @@
 				<rich-text :nodes="content"></rich-text>
 			</view>
 		</view>
+		<view class="nav">
+			<!-- GoodsNav 商品导航 -->
+			<uni-goods-nav :fill="true" :options="options" :buttonGroup="buttonGroup" @click="onClick"
+				@buttonClick="buttonClick" />
+		</view>
 	</view>
 </template>
 
 <script>
+	import uniGoodsNav from '@/uni_modules/uni-goods-nav/components/uni-goods-nav/uni-goods-nav.vue'
 	export default {
 		data() {
 			return {
 				id: 0,
 				swipers: [],
 				detail: {},
-				content: ''
+				content: '',
+				/* GoodsNav 商品导航 */
+				options: [{
+					icon: 'headphones',
+					text: '客服'
+				}, {
+					icon: 'shop',
+					text: '店铺',
+					info: 0,
+					infoBackgroundColor: '#007aff',
+					infoColor: "red"
+				}, {
+					icon: 'cart',
+					text: '购物车',
+					info: 2
+				}],
+				buttonGroup: [{
+						text: '加入购物车',
+						backgroundColor: '#ff0000',
+						color: '#fff'
+					},
+					{
+						text: '立即购买',
+						backgroundColor: '#ffa200',
+						color: '#fff'
+					}
+				]
 			}
 		},
 		methods: {
@@ -56,7 +88,7 @@
 			//获取商品详情
 			async getDetailInfo() {
 				const res = await this.$myRuquest({
-					url: '/api/goods/getinfo/' +this.id
+					url: '/api/goods/getinfo/' + this.id
 				})
 				//console.log(res)
 				this.detail = res.data.message[0]
@@ -64,13 +96,26 @@
 			//获取详情内容
 			async getDetailContent() {
 				const res = await this.$myRuquest({
-					url: '/api/goods/getdesc/' +this.id
+					url: '/api/goods/getdesc/' + this.id
 				})
 				//console.log(res)
 				this.content = res.data.message[0].content
 			},
-
-
+			//GoodsNav 商品导航
+			onClick(e) {
+				console.log(e)
+				uni.showToast({
+					title: `点击${e.content.text}`,
+					icon: 'none'
+				})
+			},
+			buttonClick(e) {
+				console.log(e)
+				this.options[2].info++
+			}
+		},
+		components: {
+			uniGoodsNav
 		},
 		onLoad(options) {
 			this.id = options.id;
@@ -127,6 +172,7 @@
 		}
 
 		.detail {
+			padding-bottom: 50rpx;
 			.title {
 				padding-left: 10rpx;
 				font-size: 32rpx;
@@ -139,6 +185,11 @@
 				color: #333333;
 				line-height: 50rpx;
 			}
+		}
+		.nav{/* 设置 GoodsNav 商品导航样式*/
+			position: fixed;
+			bottom: 0;
+			width: 100%;
 		}
 	}
 </style>
