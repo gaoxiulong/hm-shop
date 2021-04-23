@@ -58,7 +58,7 @@
             "path" : "pages/videos/videos",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "视频列表",
                 "enablePullDownRefresh": false
             }
             
